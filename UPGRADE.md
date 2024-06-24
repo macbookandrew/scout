@@ -6,6 +6,10 @@
 
 In previous Scout releases, the Algolia engine utilized `numericFilters` to power `where` conditions. However, `numericFilters` does not support simple string matching. In Scout 11.x, `filters` is now used instead of `numericFilters`.
 
+### Meilisearch Engine `scout:delete-all-indexes` command
+
+In previous releases, the Meilisearch engine’s `scout:delete-all-indexes` command would drop all indexes from the Meilisearch server. In Scout 11.x, the command drops only indexes with the app’s currently-configured Scout prefix (see `SCOUT_PREFIX` env variable and/or `scout.prefix` config key).
+
 ## Upgrading To 10.0 From 9.x
 
 ### Minimum Versions
