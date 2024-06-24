@@ -431,11 +431,9 @@ class MeilisearchEngine extends Engine
         $indexes = $this->meilisearch->getIndexes($query);
 
         foreach ($indexes->getResults() as $index) {
-            if (! str($index->getUid())->startsWith(Config::get('scout.prefix'))) {
-                continue;
+            if (str($index->getUid())->startsWith(Config::get('scout.prefix'))) {
+                $tasks[] = $index->delete();
             }
-
-            $tasks[] = $index->delete();
         }
 
         return $tasks;
